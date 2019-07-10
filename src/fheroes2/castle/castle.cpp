@@ -335,8 +335,8 @@ bool Castle::isPosition(const Point& pt) const
             ++X++
     */
 
-    return pt.x >= mp.x - 1 && pt.x <= mp.x + 1 && (pt.y == mp.y - 1 || pt.y == mp.y) ||
-        (pt.x == mp.x - 2 || pt.x == mp.x + 2) && pt.y == mp.y;
+    return (pt.x >= mp.x - 1 && pt.x <= mp.x + 1 && (pt.y == mp.y - 1 || pt.y == mp.y)) ||
+        ((pt.x == mp.x - 2 || pt.x == mp.x + 2) && pt.y == mp.y);
 }
 
 void Castle::EducateHeroes()

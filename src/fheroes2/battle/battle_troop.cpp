@@ -711,7 +711,7 @@ bool Battle::Unit::isReflect() const
 bool Battle::Unit::OutOfWalls() const
 {
     return Board::isOutOfWallsIndex(GetHeadIndex()) ||
-        _monster.isWide() && Board::isOutOfWallsIndex(GetTailIndex());
+        (_monster.isWide() && Board::isOutOfWallsIndex(GetTailIndex()));
 }
 
 bool Battle::Unit::isHandFighting() const
@@ -734,9 +734,9 @@ bool Battle::Unit::isHandFighting(const Unit& a, const Unit& b)
 {
     return a.isValid() && !a.Modes(CAP_TOWER) && b.isValid() && b.GetColor() != a.GetColor() &&
     (Board::isNearIndexes(a.GetHeadIndex(), b.GetHeadIndex()) ||
-        b._monster.isWide() && Board::isNearIndexes(a.GetHeadIndex(), b.GetTailIndex()) ||
-        a._monster.isWide() && (Board::isNearIndexes(a.GetTailIndex(), b.GetHeadIndex()) ||
-            b._monster.isWide() && Board::isNearIndexes(a.GetTailIndex(), b.GetTailIndex())));
+        (b._monster.isWide() && Board::isNearIndexes(a.GetHeadIndex(), b.GetTailIndex())) ||
+        (a._monster.isWide() && (Board::isNearIndexes(a.GetTailIndex(), b.GetHeadIndex()) ||
+            (b._monster.isWide() && Board::isNearIndexes(a.GetTailIndex(), b.GetTailIndex())))));
 }
 
 void Battle::Unit::NewTurn()

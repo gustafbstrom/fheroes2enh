@@ -1652,7 +1652,7 @@ int Battle::Interface::GetBattleCursor(string& status) const
                 // if free cell or it is b_current
                 if (UNKNOWN != Board::GetCell(from)->GetDirection() ||
                     from == b_current->GetHeadIndex() ||
-                    b_current->_monster.isWide() && from == b_current->GetTailIndex())
+                    (b_current->_monster.isWide() && from == b_current->GetTailIndex()))
                 {
                     status = _("Attack %{monster}");
                     StringReplace(status, "%{monster}", b_enemy->GetName());
@@ -2208,7 +2208,7 @@ int Battle::Interface::GetAllowSwordDirection(uint32_t index) const
     {
         if (UNKNOWN != Board::GetCell(from)->GetDirection() ||
             from == b_current->GetHeadIndex() ||
-            b_current->_monster.isWide() && from == b_current->GetTailIndex())
+            (b_current->_monster.isWide() && from == b_current->GetTailIndex()))
         {
             res |= Board::GetDirection(index, from);
         }
@@ -4416,14 +4416,14 @@ void Battle::Interface::CheckGlobalEvents(LocalEvent& le)
     }
 
     // break auto battle
-    if (arena.CanBreakAutoBattle() &&
+    if  (arena.CanBreakAutoBattle() &&
         (le.MouseClickLeft(btn_auto) ||
-            le.KeyPress() && (HotKeyPressEvent(Game::EVENT_BATTLE_AUTOSWITCH) ||
-                HotKeyPressEvent(Game::EVENT_BATTLE_RETREAT) && Dialog::YES == Dialog::Message("",
-                                                                                               _("Break auto battle?"),
-                                                                                               Font::BIG,
-                                                                                               Dialog::YES |
-                                                                                               Dialog::NO))))
+        (le.KeyPress() && (HotKeyPressEvent(Game::EVENT_BATTLE_AUTOSWITCH) ||
+        (HotKeyPressEvent(Game::EVENT_BATTLE_RETREAT) && Dialog::YES == Dialog::Message("",
+                                                                                       _("Break auto battle?"),
+                                                                                       Font::BIG,
+                                                                                       Dialog::YES |
+                                                                                       Dialog::NO))))))
     {
         arena.BreakAutoBattle();
     }

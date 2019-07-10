@@ -127,10 +127,10 @@ building_t GetCurrentFlash(const Castle& castle, CastleDialog::CacheBuildings& c
             {
                 uint32_t lvl = castle.GetLevelMageGuild();
 
-                if (_item.id == BUILD_MAGEGUILD1 && lvl > 1 ||
-                    _item.id == BUILD_MAGEGUILD2 && lvl > 2 ||
-                    _item.id == BUILD_MAGEGUILD3 && lvl > 3 ||
-                    _item.id == BUILD_MAGEGUILD4 && lvl > 4)
+                if ((_item.id == BUILD_MAGEGUILD1 && lvl > 1) ||
+                    (_item.id == BUILD_MAGEGUILD2 && lvl > 2) ||
+                    (_item.id == BUILD_MAGEGUILD3 && lvl > 3) ||
+                    (_item.id == BUILD_MAGEGUILD4 && lvl > 4))
                     continue;
             }
             break;
@@ -368,11 +368,11 @@ int Castle::OpenDialog(bool readonly, bool fade)
             Dialog::ResourceInfo("", _("Income:"), world.GetKingdom(GetColor()).GetIncome(INCOME_ALL), 0);
 
         // selector troops event
-        if (selectArmy2.isValid() &&
-            (le.MouseCursor(selectArmy1.GetArea()) && selectArmy1.QueueEventProcessing(selectArmy2, &msg_status) ||
-                le.MouseCursor(selectArmy2.GetArea()) && selectArmy2.QueueEventProcessing(selectArmy1, &msg_status)) ||
-            !selectArmy2.isValid() && le.MouseCursor(selectArmy1.GetArea()) &&
-            selectArmy1.QueueEventProcessing(&msg_status))
+        if ((selectArmy2.isValid() &&
+            ((le.MouseCursor(selectArmy1.GetArea()) && selectArmy1.QueueEventProcessing(selectArmy2, &msg_status)) ||
+                (le.MouseCursor(selectArmy2.GetArea()) && selectArmy2.QueueEventProcessing(selectArmy1, &msg_status)))) ||
+            (!selectArmy2.isValid() && le.MouseCursor(selectArmy1.GetArea()) &&
+            selectArmy1.QueueEventProcessing(&msg_status)))
         {
             cursor.Hide();
             need_redraw = true;
@@ -712,8 +712,8 @@ int Castle::OpenDialog(bool readonly, bool fade)
                     msg_status = _("Meeting Heroes");
                 else
                     // status message over sign
-                    if (heroes.Guard() && le.MouseCursor(rectSign1) ||
-                        heroes.Guest() && le.MouseCursor(rectSign2))
+                    if ((heroes.Guard() && le.MouseCursor(rectSign1)) ||
+                        (heroes.Guest() && le.MouseCursor(rectSign2)))
                         msg_status = _("View Hero");
 
         if (msg_status.empty())

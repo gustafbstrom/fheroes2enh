@@ -207,7 +207,7 @@ bool Battle::Only::ChangeSettings()
                 ? buttonStart.PressDraw()
                 : buttonStart.ReleaseDraw();
 
-        if (buttonStart.isEnable() && le.MouseClickLeft(buttonStart) ||
+        if ((buttonStart.isEnable() && le.MouseClickLeft(buttonStart)) ||
             HotKeyPressEvent(Game::EVENT_DEFAULT_READY))
         {
             result = true;

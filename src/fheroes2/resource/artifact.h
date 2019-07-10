@@ -268,9 +268,9 @@ public:
 
     void RedrawItem(Artifact&, const Rect&, bool, Surface&) override;
 
-    void ResetSelected();
+    void ResetSelected() override;
 
-    void Redraw(Surface& dstsf = Display::Get());
+    void Redraw(Surface& dstsf = Display::Get()) override;
 
     bool ActionBarSingleClick(const Point&, Artifact&, const Rect&) override;
 
@@ -278,7 +278,7 @@ public:
 
     bool ActionBarDoubleClick(const Point&, Artifact&, const Rect&) override;
 
-    bool ActionBarPressRight(const Point&, Artifact&, const Rect&);
+    bool ActionBarPressRight(const Point&, Artifact&, const Rect&) override;
 
     bool QueueEventProcessing(string* = nullptr);
 

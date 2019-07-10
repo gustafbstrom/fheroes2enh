@@ -30,49 +30,49 @@ class Captain : public HeroBase
 public:
     explicit Captain(Castle&);
 
-    bool isValid() const;
+    bool isValid() const override;
 
-    int GetAttack() const;
+    int GetAttack() const override;
 
-    int GetDefense() const;
+    int GetDefense() const override;
 
-    int GetPower() const;
+    int GetPower() const override;
 
-    int GetKnowledge() const;
+    int GetKnowledge() const override;
 
-    int GetMorale() const;
+    int GetMorale() const override;
 
-    int GetLuck() const;
+    int GetLuck() const override;
 
-    int GetRace() const;
+    int GetRace() const override;
 
-    int GetColor() const;
+    int GetColor() const override;
 
-    int GetType() const;
+    int GetType() const override;
 
-    int GetControl() const;
+    int GetControl() const override;
 
     s32 GetIndex() const;
 
-    const string& GetName() const;
+    const string& GetName() const override;
 
-    const Castle* inCastle() const;
+    const Castle* inCastle() const override;
 
     int GetLevelSkill(Skill::SkillT) const override;
 
-    uint32_t GetSecondaryValues(Skill::SkillT) const;
+    uint32_t GetSecondaryValues(Skill::SkillT) const override;
 
-    const Army& GetArmy() const;
+    const Army& GetArmy() const override;
 
-    Army& GetArmy();
+    Army& GetArmy() override;
 
-    uint32_t GetMaxSpellPoints() const;
+    uint32_t GetMaxSpellPoints() const override;
 
-    void ActionPreBattle();
+    void ActionPreBattle() override;
 
-    void ActionAfterBattle();
+    void ActionAfterBattle() override;
 
-    void PortraitRedraw(s32, s32, int type, Surface&) const;
+    void PortraitRedraw(s32, s32, int type, Surface&) const override;
 
     Surface GetPortrait(int type) const;
 

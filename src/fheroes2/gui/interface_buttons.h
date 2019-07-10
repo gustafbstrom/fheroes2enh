@@ -40,7 +40,7 @@ namespace Interface
 
         void SetRedraw() const;
 
-        void Redraw();
+        void Redraw() override;
 
         int QueueEventProcessing();
 

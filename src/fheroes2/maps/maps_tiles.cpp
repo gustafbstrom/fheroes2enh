@@ -1037,7 +1037,7 @@ void Maps::Addons::Remove(uint32_t uniq)
 
 uint32_t PackTileSpriteIndex(uint32_t index, uint32_t shape) /* index max: 0x3FFF, shape value: 0, 1, 2, 3 */
 {
-    return shape << 14 | 0x3FFF & index;
+    return shape << 14 | (0x3FFF & index);
 }
 
 /* Maps::Tiles */
