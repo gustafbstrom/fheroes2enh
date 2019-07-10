@@ -384,7 +384,7 @@ else()
     link_directories(/usr/local/lib)
     link_libraries(libpng.a libSDL.a libSDLmain.a libSDL_image.a libSDL_mixer.a)
 
-    TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLTTF_LIBRARY} -lpng -Wl,-framework,Cocoa )
+    TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLTTF_LIBRARY} -L/usr/local/lib -lpng -Wl,-framework,Cocoa )
 endif()
 
 
