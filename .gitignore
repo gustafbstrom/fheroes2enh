@@ -47,13 +47,9 @@ obj
 *.swp
 CMakeCache.txt
 DATA
-H2CAMP.TXT
-HELP
-Journals
 MAPS
 MUSIC
 Makefile
-POLCAMP.TXT
 SOUND
 cmake_install.cmake
 fheroes2
@@ -63,3 +59,4 @@ src/fheroes2/Makefile
 src/fheroes2/agg/Makefile
 src/fheroes2/agg/cmake_install.cmake
 src/fheroes2/cmake_install.cmake
+compile_commands.json
